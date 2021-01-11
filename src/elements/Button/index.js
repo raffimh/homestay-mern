@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { BrowserRouter as NavLink, Link } from "react-router-dom";
 import propTypes from "prop-types";
 
 export default function Button(props) {
@@ -29,7 +29,6 @@ export default function Button(props) {
       </span>
     );
   }
-
   if (props.type === "link") {
     if (props.isExternal) {
       return (
@@ -38,21 +37,21 @@ export default function Button(props) {
           className={className.join(" ")}
           style={props.style}
           target={props.target === "_blank" ? "_blank" : undefined}
-          rel={props.target === "_blank" ? "noopener norefferer" : undefined}
+          rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
         >
           {props.children}
         </a>
       );
     } else {
       return (
-        <NavLink
+        <Link
           to={props.href}
           className={className.join(" ")}
           style={props.style}
           onClick={onClick}
         >
           {props.children}
-        </NavLink>
+        </Link>
       );
     }
   }
